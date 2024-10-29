@@ -19,4 +19,16 @@
     //Middleware Baseado em Mensagens(MOM), Middleware de Chamada de Procedimento Remoto (RPC), Middleware de Dados ou Banco de Dados, Middleware de Interface de Programação de Aplicativos (API), Middleware do Object Request Broker (ORB), Middleware Transacional, Portal de Middleware, Middleware de Robótica, etc.
 
     --> Exemplos de Uso em Node.js
-    //
+    const express = require('express');
+    const app = express();
+
+    // Middleware #1
+    app.get('/', (req, res, next) => {
+      res.locals.hello = 'Hello World';
+      next();
+    }); 
+
+    // Middleware #2
+    app.get('/', (req, res) => {
+      return res.send(res.locals.hello);
+    });
